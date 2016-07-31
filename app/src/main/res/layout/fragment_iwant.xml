@@ -1,0 +1,111 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.bumsvsmolls.dumphunting.IWantFragment">
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/button_throw"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/round_button"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="0dp"
+                android:layout_margin="5dp"
+                android:textColor="#ffffff"
+                android:src="@drawable/bin"
+                android:scaleType="fitCenter" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:text="@string/wanna_throw"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/button_search"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/round_button"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="0dp"
+                android:layout_margin="5dp"
+                android:textColor="#ffffff"
+                android:src="@drawable/bin"
+                android:scaleType="fitCenter" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:text="@string/wanna_find"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/button_see_shit_dont_need"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/round_button"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="0dp"
+                android:layout_margin="5dp"
+                android:textColor="#ffffff"
+                android:src="@drawable/bin"
+                android:scaleType="fitCenter" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:text="@string/wanna_share_seen_shit"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/button_surf"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/round_button"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="0dp"
+                android:layout_margin="5dp"
+                android:textColor="#ffffff"
+                android:src="@drawable/bin"
+                android:scaleType="fitCenter" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:text="@string/wanna_surf"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

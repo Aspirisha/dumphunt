@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">dumphunting</string>
+    <string name="title_activity_dumps_map">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="i_want_to_do">I want to…</string>
+    <string name="wanna_throw">I\'m about to throw shit</string>
+    <string name="wanna_find">I am looking for treasure</string>
+    <string name="wanna_surf">Let\'s go free surfing</string>
+    <string name="wanna_share_seen_shit">I see good stuff… Yet don\'t need it</string>
+
+    <string name="what_you_look_for">I am looking for…</string>
+</resources>
