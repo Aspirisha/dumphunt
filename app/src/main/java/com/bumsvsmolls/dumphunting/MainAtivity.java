@@ -2,6 +2,7 @@ package com.bumsvsmolls.dumphunting;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -10,7 +11,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MainAtivity extends FragmentActivity implements OnMapReadyCallback, IWantFragment.OnFragmentInteractionListener {
+public class MainAtivity extends FragmentActivity implements OnMapReadyCallback,
+        IWantFragment.OnActionSelectedListener,
+        ThrowAwayFragment.OnFragmentInteractionListener {
 
     private GoogleMap mMap;
 
@@ -21,7 +24,14 @@ public class MainAtivity extends FragmentActivity implements OnMapReadyCallback,
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         //SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
         //        .findFragmentById(R.id.map);
-        IWantFragment iwf = (IWantFragment) getSupportFragmentManager().findFragmentById(R.id.action_choice);
+        IWantFragment iwf = (IWantFragment) getSupportFragmentManager().findFragmentById(R.id.iwant_fragment);
+        if (iwf == null) {
+            iwf = new IWantFragment();
+        }
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.main_frame, iwf).addToBackStack(null).commit();
         //mapFragment.getMapAsync(this);
     }
 
@@ -52,6 +62,22 @@ public class MainAtivity extends FragmentActivity implements OnMapReadyCallback,
         });
     }
 
+
+    @Override
+    public void OnThrowPressed() {
+        Fragment f = (ThrowAwayFragment)
+                getSupportFragmentManager().findFragmentById(R.id.fragment_throw);
+        if (f != null) {
+
+        } else {
+            f = new ThrowAwayFragment();
+            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, f).addToBackStack(null).commit();
+        }
+
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {

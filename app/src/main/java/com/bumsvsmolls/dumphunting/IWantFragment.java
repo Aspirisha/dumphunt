@@ -17,7 +17,7 @@ import android.view.ViewGroup;
  * Use the {@link IWantFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class IWantFragment extends Fragment {
+public class IWantFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,7 +27,12 @@ public class IWantFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private View.OnClickListener mButtonsListener;
+    private OnActionSelectedListener mCallback;
+
+    public interface OnActionSelectedListener {
+        void OnThrowPressed();
+    }
 
     public IWantFragment() {
         // Required empty public constructor
@@ -48,12 +53,25 @@ public class IWantFragment extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mButtonsListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.button_throw:
+                        mCallback.OnThrowPressed();
+                        break;
+                }
+            }
+        };
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -63,22 +81,20 @@ public class IWantFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_iwant, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_iwant, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        v.findViewById(R.id.button_throw).setOnClickListener(mButtonsListener);
+        v.findViewById(R.id.button_search).setOnClickListener(mButtonsListener);
+        v.findViewById(R.id.button_see_shit_dont_need).setOnClickListener(mButtonsListener);
+        v.findViewById(R.id.button_surf).setOnClickListener(mButtonsListener);
+        return v;
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnActionSelectedListener) {
+            mCallback = (OnActionSelectedListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -88,21 +104,11 @@ public class IWantFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        mCallback = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void onClick(View v) {
+
     }
 }

@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iwant_fragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context="com.bumsvsmolls.dumphunting.IWantFragment">
@@ -15,9 +16,9 @@
             android:orientation="horizontal"
             android:id="@+id/button_throw"
             android:layout_margin="10dp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="@drawable/round_button"
-            android:layout_height="wrap_content">
+            android:background="@drawable/round_button">
 
             <ImageView
                 android:layout_width="50dp"
